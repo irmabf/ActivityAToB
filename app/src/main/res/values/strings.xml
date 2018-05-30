@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ActivityAToB</string>
+    <string name="btn_a_to_">Go to B</string>
+</resources>

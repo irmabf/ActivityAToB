@@ -25,14 +25,28 @@ class BActivity : AppCompatActivity() {
             return intent
         }
     }
+    //📌Accedo a los datos de la actividad a 📌↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+    /*Con by lazy el atributo no tiene valor hasta que no se intenta acceder
+    * por primera vez a su valor. La primera vez que se intenta acceder se ejecuta
+     * el código de entre las lleves: intent.getIntExtra && intent.getStringExtra,
+     * con getIntExtra, getStringExtra, se va a devolver un numero y una string
+     * y las proximas veces que se acceda a number o string ya se quedará con ese
+     * valor para siempre, por eso es un val y no un var, es una constante, una vez
+     * se le da un valor, se queda con él.*/
+    val number by lazy {
+        intent.getIntExtra(EXTRA_NUMBER, 0)
+    }
+    val string by lazy {
+        intent.getStringExtra(EXTRA_STRING)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_b)
 
-        //📌Accedo a los datos de la actividad a
-        val number = intent.getIntExtra(EXTRA_NUMBER, 0)
-        val string = intent.getStringExtra(EXTRA_STRING)
+        //📌Accedo a los datos de la actividad a 📌↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+      //  val number = intent.getIntExtra(EXTRA_NUMBER, 0)
+       // val string = intent.getStringExtra(EXTRA_STRING)
 
         result.text = "He recibido esto: ${string}. ${number}"
 
